@@ -1,2 +1,2 @@
 # Ping-Pong-Game
-Retro game made to be like the game "Pong"! 
+Inspired by the retro arcade game "Pong"!
