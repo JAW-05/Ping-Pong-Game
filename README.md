@@ -1,3 +1,3 @@
-# Ping-Pong-Game
+# Ping Pong Game
 Inspired by the retro arcade game "Pong"!
-Made using Python and Pygame 
+Written using Python and Pygame 
