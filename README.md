@@ -1,5 +1,8 @@
 # [🏓] Ping-Pong-Game
-Inspired by the retro arcade game "Pong"! 
+Inspired by the retro arcade game "Pong"!
+
+![pong ping](https://github.com/JAW-05/Ping-Pong-Game/assets/174991311/7634e382-381f-4db9-93ec-69e6d2de1a4b)
+
 
 Made using Python and Pygame 
 # Installing
