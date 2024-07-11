@@ -3,4 +3,7 @@ Inspired by the retro arcade game "Pong"!
 
 Made using Python and Pygame 
 # Installing
-Download Python and pygame from official website and install it if you have not install it yet
+Download Python from the offical website if you don't have it installed yet.
+
+Run the following in the terminal to install the Pygame library
+
