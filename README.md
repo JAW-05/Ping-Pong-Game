@@ -22,5 +22,9 @@ Download the source code from the repository "pingpong.py" and run the file just
 # Screenshots
 
 ![Screenshot 2024-07-11 144852](https://github.com/user-attachments/assets/9003bc5c-be28-421b-973d-c49a84825b18)
+*Game screen*
+
+![Screenshot 2024-07-15 131844](https://github.com/user-attachments/assets/47bf9543-22dc-4716-a2cb-b5bee05e0de3)
+*End of game screen*
 
 
