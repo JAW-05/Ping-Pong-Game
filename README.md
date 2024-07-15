@@ -21,5 +21,6 @@ Download the source code from the repository "pingpong.py" and run the file just
 
 # Screenshots
 
+![Screenshot 2024-07-11 144852](https://github.com/user-attachments/assets/9003bc5c-be28-421b-973d-c49a84825b18)
 
 
