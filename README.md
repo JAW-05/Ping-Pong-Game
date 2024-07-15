@@ -27,4 +27,6 @@ Download the source code from the repository "pingpong.py" and run the file just
 ![Screenshot 2024-07-15 131844](https://github.com/user-attachments/assets/47bf9543-22dc-4716-a2cb-b5bee05e0de3)
 *End of game screen*
 
-
+# Credits 
+Techwithtim: 
+https://youtu.be/vVGTZlnnX3U?si=w2YDxoTO4Bwkhbcl
