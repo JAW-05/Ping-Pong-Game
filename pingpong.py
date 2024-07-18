@@ -189,3 +189,63 @@ def show_game_over_screen(win_text):
 
 # Main function
 def main():
+    clock = pygame.time.Clock()
+
+    left_paddle = Paddle(10, HEIGHT // 2 - PADDLE_HEIGHT // 2, PADDLE_WIDTH, PADDLE_HEIGHT)
+    right_paddle = Paddle(WIDTH - 10 - PADDLE_WIDTH, HEIGHT // 2 - PADDLE_HEIGHT // 2, PADDLE_WIDTH, PADDLE_HEIGHT)
+    ball = Ball(WIDTH // 2, HEIGHT // 2, BALL_RADIUS)
+
+    left_score = 0
+    right_score = 0
+
+    show_opening_screen()  # Display the opening screen
+
+    while True:
+        # Event handling
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        keys = pygame.key.get_pressed()
+        if any(keys):
+            break  # Exit the opening screen on any key press
+
+        clock.tick(FPS)
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        # Handle paddle movement
+        keys = pygame.key.get_pressed()
+        handle_paddle_movement(keys, left_paddle, right_paddle)
+
+        # Update game logic
+        game_over, left_score, right_score = update_game(left_paddle, right_paddle, ball, left_score, right_score)
+        if game_over:
+            if left_score >= WINNING_SCORE:
+                show_game_over_screen("Left Player Won!")
+            elif right_score >= WINNING_SCORE:
+                show_game_over_screen("Right Player Won!")
+            
+            # Reset game state
+            left_score = 0
+            right_score = 0
+            left_paddle.reset()
+            right_paddle.reset()
+            ball.reset()
+
+        # Draw game elements
+        draw_game(WIN, left_paddle, right_paddle, ball, left_score, right_score)
+
+        # Control the frame rate
+        clock.tick(FPS)
+
+    pygame.quit()
+    sys.exit()
+
+if __name__ == '__main__':
+    main()
