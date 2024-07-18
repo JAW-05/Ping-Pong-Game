@@ -29,7 +29,7 @@ Download the source code from the repository "pingpong.py" and run the file just
 
 # Credits 
 Code: 
-https://youtu.be/vVGTZlnnX3U?si=w2YDxoTO4Bwkhbcl
+https://youtu.be/vVGTZlnnX3U?si=w2YDxoTO4Bwkhbcl &
 Jeryann Tan
 
 Music:
