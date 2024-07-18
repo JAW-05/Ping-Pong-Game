@@ -12,12 +12,12 @@ Download Python from the offical website if you don't have it installed yet.
 
 Run the following in the terminal to install the Pygame library: `pip install pygame`
 
-Also download the file `retro.ogg` for music
+Also download the file `8bit.mp3` & `bounce.mp3`  for music and sound effect
 
 # Running the game
 Download the source code from the repository `pingpong.py` and run the file just as any other Python script (.py) file.
 
-Run the `retro.ogg` file too so music will run 
+Run the `8bit.mp3` & `bounce.mp3` file too so music and sound effect will run 
 
 # Controls 
 * **For left player:** Use **W** and **S** to move up and down
@@ -37,6 +37,6 @@ https://youtu.be/vVGTZlnnX3U?si=w2YDxoTO4Bwkhbcl &
 Jeryann Tan
 
 Music:
-https://www.FesliyanStudios.com
+https://pixabay.com/
 
 
