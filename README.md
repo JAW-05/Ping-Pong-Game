@@ -26,12 +26,15 @@ Run the `8bit.mp3` & `bounce.mp3` file too so music and sound effect will run
 # Screenshots
 
 ![Screenshot 2024-07-18 155619](https://github.com/user-attachments/assets/8c039d03-f3f5-4df5-bbb9-521e179733e3)
+
 *Opening screen*
 
-![Screenshot 2024-07-18 094828](https://github.com/user-attachments/assets/3d8e6d35-268b-4f5c-afb1-d5367449e2e9)
+![Screenshot 2024-07-18 155923](https://github.com/user-attachments/assets/cb5b3018-d29a-4ce2-a46e-d193165a18da)
+
 *Game screen*
 
-![Screenshot 2024-07-18 095033](https://github.com/user-attachments/assets/901130f4-bed2-4f51-8bfe-3c5feb878b06)
+![Screenshot 2024-07-18 160059](https://github.com/user-attachments/assets/d0ae469c-a97a-41b6-88a2-c4dbe10f4a4d)
+
 *End of game screen*
 
 # Credits 
