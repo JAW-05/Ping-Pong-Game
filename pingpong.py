@@ -1,7 +1,7 @@
 import pygame
 pygame.init()
 
-
+# Constants and Variables:
 WIDTH, HEIGHT = 700, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ping Pong")
@@ -10,6 +10,9 @@ FPS = 60
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+BLUE = (0,0,255)
+RED = (255,0,0)
+
 
 PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
 BALL_RADIUS = 7
@@ -17,9 +20,12 @@ BALL_RADIUS = 7
 SCORE_FONT = pygame.font.SysFont("comicsans", 50)
 WINNING_SCORE = 10
 
+MUSIC = pygame.mixer_music.load('retro.ogg')
+pygame.mixer_music.play(-1)
 
+# Paddle:
 class Paddle:
-    COLOR = WHITE
+    COLOR = BLUE
     VEL = 4
 
     def __init__(self, x, y, width, height):
@@ -42,7 +48,7 @@ class Paddle:
         self.x = self.original_x
         self.y = self.original_y
 
-
+# Ball:
 class Ball:
     MAX_VEL = 5
     COLOR = WHITE
@@ -53,7 +59,8 @@ class Ball:
         self.radius = radius
         self.x_vel = self.MAX_VEL
         self.y_vel = 0
-
+        
+#  Functions:
     def draw(self, win):
         pygame.draw.circle(win, self.COLOR, (self.x, self.y), self.radius)
 
@@ -83,7 +90,7 @@ def draw(win, paddles, ball, left_score, right_score):
     for i in range(10, HEIGHT, HEIGHT//20):
         if i % 2 == 1:
             continue
-        pygame.draw.rect(win, WHITE, (WIDTH//2 - 5, i, 10, HEIGHT//20))
+        pygame.draw.rect(win, RED, (WIDTH//2 - 5, i, 10, HEIGHT//20))
 
     ball.draw(win)
     pygame.display.update()
@@ -184,7 +191,7 @@ def main():
             right_paddle.reset()
             left_score = 0
             right_score = 0
-
+   
     pygame.quit()
 
 
