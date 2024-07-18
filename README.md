@@ -25,10 +25,10 @@ Run the `retro.ogg` file too so music will run
 
 # Screenshots
 
-![Screenshot 2024-07-11 144852](https://github.com/user-attachments/assets/9003bc5c-be28-421b-973d-c49a84825b18)
+![Screenshot 2024-07-18 094828](https://github.com/user-attachments/assets/3d8e6d35-268b-4f5c-afb1-d5367449e2e9)
 *Game screen*
 
-![Screenshot 2024-07-15 131844](https://github.com/user-attachments/assets/47bf9543-22dc-4716-a2cb-b5bee05e0de3)
+![Screenshot 2024-07-18 095033](https://github.com/user-attachments/assets/901130f4-bed2-4f51-8bfe-3c5feb878b06)
 *End of game screen*
 
 # Credits 
