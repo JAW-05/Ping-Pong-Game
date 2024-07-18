@@ -28,5 +28,11 @@ Download the source code from the repository "pingpong.py" and run the file just
 *End of game screen*
 
 # Credits 
-Techwithtim: 
+Code: 
 https://youtu.be/vVGTZlnnX3U?si=w2YDxoTO4Bwkhbcl
+Jeryann Tan
+
+Music:
+https://www.FesliyanStudios.com
+
+
