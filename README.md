@@ -12,8 +12,12 @@ Download Python from the offical website if you don't have it installed yet.
 
 Run the following in the terminal to install the Pygame library: `pip install pygame`
 
+Also download the file `retro.ogg` for music
+
 # Running the game
-Download the source code from the repository "pingpong.py" and run the file just as any other Python script (.py) file.
+Download the source code from the repository `pingpong.py` and run the file just as any other Python script (.py) file.
+
+Run the `retro.ogg` file too so music will run 
 
 # Controls 
 * **For left player:** Use **W** and **S** to move up and down
