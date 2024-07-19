@@ -19,13 +19,34 @@ RED = (255, 0, 0)
 PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
 BALL_RADIUS = 7
 
-SCORE_FONT = pygame.font.SysFont("comicsans", 50)
-WINNING_SCORE = 10
+# Font Sizes
+START_FONT_SIZE = 20  
+SCOREBOARD_FONT_SIZE = 40  
+WINNING_FONT_SIZE = 30  
 
-MUSIC = pygame.mixer.Channel(0).play(pygame.mixer.Sound('8bit.mp3'))
-pygame.mixer.music.set_volume(-1)
-BOUNCEFX = pygame.mixer_music.load('bounce.mp3')
-pygame.mixer_music.play(-1)
+# Load the retro font with error handling
+FONT_PATH = 'PressStart2P-Regular.ttf'  
+
+try:
+    start_font = pygame.font.Font(FONT_PATH, START_FONT_SIZE)
+    scoreboard_font = pygame.font.Font(FONT_PATH, SCOREBOARD_FONT_SIZE)
+    winning_font = pygame.font.Font(FONT_PATH, WINNING_FONT_SIZE)
+except FileNotFoundError:
+    print(f"Font not found at {FONT_PATH}, using default font.")
+    start_font = pygame.font.Font(None, START_FONT_SIZE)
+    scoreboard_font = pygame.font.Font(None, SCOREBOARD_FONT_SIZE)
+    winning_font = pygame.font.Font(None, WINNING_FONT_SIZE)
+
+# Load sounds
+pygame.mixer.music.load('8bit.mp3')
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
+
+BOUNCEFX = pygame.mixer.Sound('bounce.mp3')
+WINFX = pygame.mixer.Sound('score.mp3')
+
+# Winning score
+WINNING_SCORE = 10
 
 # Opening Screen Function
 def show_opening_screen():
@@ -38,13 +59,16 @@ def show_opening_screen():
             elif event.type == pygame.KEYDOWN:
                 intro = False  # Exit the intro loop on any key press
 
-        WIN.fill(BLACK)  # Fill background color (adjust as needed)
+        WIN.fill(BLACK)  
+
+        # Render text for the opening screen
+        title_text = start_font.render("Ping Pong", True, WHITE)
+        title_rect = title_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 20))
+        WIN.blit(title_text, title_rect)
         
-        # Render text
-        font = pygame.font.Font(None, 36)
-        text = font.render("Welcome to Ping Pong! Click any key to continue :)", True, WHITE)
-        text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
-        WIN.blit(text, text_rect)
+        instruction_text = start_font.render("Click any key to continue :)", True, WHITE)
+        instruction_rect = instruction_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 20))
+        WIN.blit(instruction_text, instruction_rect)
         
         pygame.display.update()
 
@@ -99,7 +123,7 @@ class Ball:
 
 # Function to draw game elements
 def draw_game(win, left_paddle, right_paddle, ball, left_score, right_score):
-    win.fill(BLACK)  # Clear screen
+    win.fill(BLACK)  
 
     # Draw midline
     for i in range(10, HEIGHT, HEIGHT // 20):
@@ -113,8 +137,8 @@ def draw_game(win, left_paddle, right_paddle, ball, left_score, right_score):
     ball.draw(win)
 
     # Draw scores
-    left_score_text = SCORE_FONT.render(f"{left_score}", 1, WHITE)
-    right_score_text = SCORE_FONT.render(f"{right_score}", 1, WHITE)
+    left_score_text = scoreboard_font.render(f"{left_score}", True, WHITE)
+    right_score_text = scoreboard_font.render(f"{right_score}", True, WHITE)
     win.blit(left_score_text, (WIDTH // 4 - left_score_text.get_width() // 2, 20))
     win.blit(right_score_text, (WIDTH * (3 / 4) - right_score_text.get_width() // 2, 20))
 
@@ -138,6 +162,8 @@ def handle_collision(ball, left_paddle, right_paddle):
                 y_vel = difference_in_y / reduction_factor
                 ball.y_vel = -1 * y_vel
 
+                pygame.mixer.Sound.play(BOUNCEFX)  
+
     else:
         if ball.y >= right_paddle.y and ball.y <= right_paddle.y + right_paddle.height:
             if ball.x + ball.radius >= right_paddle.x:
@@ -148,6 +174,8 @@ def handle_collision(ball, left_paddle, right_paddle):
                 reduction_factor = (right_paddle.height / 2) / ball.MAX_VEL
                 y_vel = difference_in_y / reduction_factor
                 ball.y_vel = -1 * y_vel
+
+                pygame.mixer.Sound.play(BOUNCEFX)  
 
 # Function to handle paddle movement
 def handle_paddle_movement(keys, left_paddle, right_paddle):
@@ -170,10 +198,12 @@ def update_game(left_paddle, right_paddle, ball, left_score, right_score):
     if ball.x < 0:
         right_score += 1
         ball.reset()
+        pygame.mixer.Sound.play(WINFX)  
+
     elif ball.x > WIDTH:
         left_score += 1
         ball.reset()
-
+        pygame.mixer.Sound.play(WINFX)  
     # Check if a player has won
     if left_score >= WINNING_SCORE or right_score >= WINNING_SCORE:
         return True, left_score, right_score  # Game over
@@ -182,7 +212,7 @@ def update_game(left_paddle, right_paddle, ball, left_score, right_score):
 
 # Function to show game over screen
 def show_game_over_screen(win_text):
-    text = SCORE_FONT.render(win_text, 1, WHITE)
+    text = winning_font.render(win_text, True, WHITE)
     WIN.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 2 - text.get_height() // 2))
     pygame.display.update()
     pygame.time.delay(5000)  # Delay for 5 seconds before restarting the game
@@ -198,8 +228,7 @@ def main():
     left_score = 0
     right_score = 0
 
-    show_opening_screen()  # Display the opening screen
-
+    show_opening_screen()  
     while True:
         # Event handling
         for event in pygame.event.get():
@@ -209,7 +238,7 @@ def main():
 
         keys = pygame.key.get_pressed()
         if any(keys):
-            break  # Exit the opening screen on any key press
+            break  
 
         clock.tick(FPS)
 
@@ -236,8 +265,7 @@ def main():
             right_score = 0
             left_paddle.reset()
             right_paddle.reset()
-            ball.reset()
-
+    
         # Draw game elements
         draw_game(WIN, left_paddle, right_paddle, ball, left_score, right_score)
 
@@ -249,10 +277,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
