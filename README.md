@@ -25,15 +25,15 @@ Run the files from assets folder `8bit.mp3` `bounce.mp3` `score.mp3` `PressStart
 
 # Screenshots
 
-![Screenshot 2024-07-18 155619](https://github.com/user-attachments/assets/8c039d03-f3f5-4df5-bbb9-521e179733e3)
+![Screenshot 2024-07-19 184829](https://github.com/user-attachments/assets/0cf09934-d812-4225-ab96-b5958f7b28b5)
 
 *Opening screen*
 
-![Screenshot 2024-07-18 155923](https://github.com/user-attachments/assets/cb5b3018-d29a-4ce2-a46e-d193165a18da)
+![Screenshot 2024-07-19 184910](https://github.com/user-attachments/assets/94e09936-bece-41d1-bde5-71d92e22e37e)
 
 *Game screen*
 
-![Screenshot 2024-07-18 160059](https://github.com/user-attachments/assets/d0ae469c-a97a-41b6-88a2-c4dbe10f4a4d)
+![Screenshot 2024-07-19 184929](https://github.com/user-attachments/assets/dd6f2910-ed2e-48db-91bc-5b3b7b201d56)
 
 *End of game screen*
 
@@ -42,7 +42,7 @@ Code:
 https://youtu.be/vVGTZlnnX3U?si=w2YDxoTO4Bwkhbcl &
 Jeryann Tan
 
-Music:
+Music/Sound effects:
 https://pixabay.com/
 
 
