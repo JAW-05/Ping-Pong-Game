@@ -12,12 +12,12 @@ Download Python from the offical website if you don't have it installed yet.
 
 Run the following in the terminal to install the Pygame library: `pip install pygame`
 
-Also download all the files in assets folder `8bit.mp3` `bounce.mp3` `score.mp3` `PressStart2P-Regular.ttf` for music, sound effect and font
+Also download all the files `8bit.mp3` `bounce.mp3` `score.mp3` `PressStart2P-Regular.ttf` for music, sound effect and font
 
 # Running the game
 Download the source code from the repository `pingpong.py` and run the file just as any other Python script (.py) file.
 
-Run the files from assets folder `8bit.mp3` `bounce.mp3` `score.mp3` `PressStart2P-Regular.ttf` for music, sound effect and font
+Run the files `8bit.mp3` `bounce.mp3` `score.mp3` `PressStart2P-Regular.ttf` for music, sound effect and font
 
 # Controls 
 * **For left player:** Use **W** and **S** to move up and down
