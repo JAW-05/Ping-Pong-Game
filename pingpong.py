@@ -58,17 +58,32 @@ def show_opening_screen():
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 intro = False  # Exit the intro loop on any key press
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                pygame.quit()
+                sys.exit()
 
         WIN.fill(BLACK)  
 
         # Render text for the opening screen
         title_text = start_font.render("Ping Pong", True, WHITE)
-        title_rect = title_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 20))
+        title_rect = title_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 100))
         WIN.blit(title_text, title_rect)
         
-        instruction_text = start_font.render("Click any key to continue :)", True, WHITE)
-        instruction_rect = instruction_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 20))
-        WIN.blit(instruction_text, instruction_rect)
+        instruction_text1 = start_font.render("Player 1: W/S keys", True, WHITE)
+        instruction_rect1 = instruction_text1.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 40))
+        WIN.blit(instruction_text1, instruction_rect1)
+        
+        instruction_text2 = start_font.render("Player 2: Up/Down keys", True, WHITE)
+        instruction_rect2 = instruction_text2.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 10))
+        WIN.blit(instruction_text2, instruction_rect2)
+        
+        quit_instruction = start_font.render("Q - Quit", True, WHITE)
+        quit_rect = quit_instruction.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 20))
+        WIN.blit(quit_instruction, quit_rect)
+
+        start_text = start_font.render("Click any key to start :)", True, WHITE)
+        start_rect = start_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 60))
+        WIN.blit(start_text, start_rect)
         
         pygame.display.update()
 
@@ -210,12 +225,46 @@ def update_game(left_paddle, right_paddle, ball, left_score, right_score):
 
     return False, left_score, right_score  # Game continues
 
-# Function to show game over screen
+# Function to show game over screen with centered text and buttons
 def show_game_over_screen(win_text):
-    text = winning_font.render(win_text, True, WHITE)
-    WIN.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 2 - text.get_height() // 2))
-    pygame.display.update()
-    pygame.time.delay(5000)  # Delay for 5 seconds before restarting the game
+    button_font = pygame.font.Font(FONT_PATH, 20)
+    retry_button = pygame.Rect(0, 0, 200, 50)
+    quit_button = pygame.Rect(0, 0, 200, 50)
+    
+    retry_button.center = (WIDTH // 2, HEIGHT // 2 + 40)
+    quit_button.center = (WIDTH // 2, HEIGHT // 2 + 100)
+
+    while True:
+        WIN.fill(BLACK)
+        
+        text = winning_font.render(win_text, True, WHITE)
+        WIN.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 2 - text.get_height() // 2 - 60))
+
+        pygame.draw.rect(WIN, BLUE, retry_button)
+        pygame.draw.rect(WIN, RED, quit_button)
+        
+        retry_text = button_font.render("Retry", True, WHITE)
+        WIN.blit(retry_text, (retry_button.x + (retry_button.width - retry_text.get_width()) // 2, retry_button.y + (retry_button.height - retry_text.get_height()) // 2))
+
+        quit_text = button_font.render("Quit", True, WHITE)
+        WIN.blit(quit_text, (quit_button.x + (quit_button.width - quit_text.get_width()) // 2, quit_button.y + (quit_button.height - quit_text.get_height()) // 2))
+
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if retry_button.collidepoint(event.pos):
+                    return "retry"
+                elif quit_button.collidepoint(event.pos):
+                    pygame.quit()
+                    sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    sys.exit()
 
 # Main function
 def main():
@@ -229,51 +278,41 @@ def main():
     right_score = 0
 
     show_opening_screen()  
-    while True:
-        # Event handling
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-        keys = pygame.key.get_pressed()
-        if any(keys):
-            break  
-
-        clock.tick(FPS)
 
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        pygame.quit()
+                        sys.exit()
 
-        # Handle paddle movement
-        keys = pygame.key.get_pressed()
-        handle_paddle_movement(keys, left_paddle, right_paddle)
+            keys = pygame.key.get_pressed()
+            handle_paddle_movement(keys, left_paddle, right_paddle)
 
-        # Update game logic
-        game_over, left_score, right_score = update_game(left_paddle, right_paddle, ball, left_score, right_score)
-        if game_over:
-            if left_score >= WINNING_SCORE:
-                show_game_over_screen("Left Player Won!")
-            elif right_score >= WINNING_SCORE:
-                show_game_over_screen("Right Player Won!")
-            
-            # Reset game state
-            left_score = 0
-            right_score = 0
-            left_paddle.reset()
-            right_paddle.reset()
+            game_over, left_score, right_score = update_game(left_paddle, right_paddle, ball, left_score, right_score)
+            if game_over:
+                if left_score >= WINNING_SCORE:
+                    result = show_game_over_screen("Left Player Won!")
+                elif right_score >= WINNING_SCORE:
+                    result = show_game_over_screen("Right Player Won!")
+                
+                if result == "retry":
+                    left_score = 0
+                    right_score = 0
+                    left_paddle.reset()
+                    right_paddle.reset()
+                    break  # Exit the inner game loop and restart
+                else:
+                    pygame.quit()
+                    sys.exit()
     
-        # Draw game elements
-        draw_game(WIN, left_paddle, right_paddle, ball, left_score, right_score)
+            draw_game(WIN, left_paddle, right_paddle, ball, left_score, right_score)
 
-        # Control the frame rate
-        clock.tick(FPS)
-
-    pygame.quit()
-    sys.exit()
+            clock.tick(FPS)
 
 if __name__ == '__main__':
     main()
