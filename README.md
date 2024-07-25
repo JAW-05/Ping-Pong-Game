@@ -25,7 +25,7 @@ Run the files `8bit.mp3` `bounce.mp3` `score.mp3` `PressStart2P-Regular.ttf` for
 
 # Screenshots
 
-![Screenshot 2024-07-19 184829](https://github.com/user-attachments/assets/0cf09934-d812-4225-ab96-b5958f7b28b5)
+![Screenshot 2024-07-25 133111](https://github.com/user-attachments/assets/f0c62b4f-8b82-4141-b8fc-8f95c7ddc460)
 
 *Opening screen*
 
@@ -33,7 +33,7 @@ Run the files `8bit.mp3` `bounce.mp3` `score.mp3` `PressStart2P-Regular.ttf` for
 
 *Game screen*
 
-![Screenshot 2024-07-19 184929](https://github.com/user-attachments/assets/dd6f2910-ed2e-48db-91bc-5b3b7b201d56)
+![Screenshot 2024-07-25 133033](https://github.com/user-attachments/assets/d887a9ba-58f3-40ff-ae40-e7633bfb4267)
 
 *End of game screen*
 
